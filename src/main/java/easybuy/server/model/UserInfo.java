@@ -1,5 +1,9 @@
 package easybuy.server.model;
 
+/**
+ * @author zhaokx3
+ *
+ */
 public class UserInfo {
 	private Integer userId;
     private String userName;

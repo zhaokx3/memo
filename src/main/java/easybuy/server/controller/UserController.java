@@ -1,7 +1,5 @@
 package easybuy.server.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import easybuy.server.comm.Util;
 import easybuy.server.model.HttpResult;
-import easybuy.server.model.Ticket;
 import easybuy.server.model.User;
 import easybuy.server.model.UserInfo;
 import easybuy.server.service.UserService;
@@ -120,56 +117,4 @@ public class UserController {
 		return result;
 	}
 	
-	@ResponseBody
-	@RequestMapping(value = "getTicketByUserId", method = RequestMethod.POST)
-	public Object getTicketByUserId(Integer userId, HttpSession session) {
-		List<Ticket> tickets = null;
-		String message = null;
-		
-		logger.info("Request to get ticket by userId, session id:" + session.getId());
-		
-		if (userId == null) {
-			message = "用户Id为空";
-		}
-		
-		if (message == null) {
-			if (userService.getUserByUserId(userId) == null) {
-				message = "用户不存在";
-			}
-		}
-		
-		if (message == null) {
-			tickets = userService.getTicketByUserId(userId);
-		}
-		
-		HttpResult<List<Ticket>> result = null;
-		
-		if (message == null) {
-			result = new HttpResult<List<Ticket>>(1, "", tickets);
-		} else {
-			result = new HttpResult<List<Ticket>>(0, message, null);
-		}
-		
-		return result;
-	}
-	
-	@ResponseBody
-	@RequestMapping(value = "createOrder", method = RequestMethod.POST)
-	public Object createOrder(String userId, String movieTimeId, String seats, HttpSession session) {
-		String message = null;
-		
-		logger.info("Request to create order, session id:" + session.getId());
-		
-		message = userService.createOrder(userId, movieTimeId, seats);
-		
-		HttpResult<String> result = null;
-		
-		if (message == null) {
-			result = new HttpResult<String>(1, "", "");
-		} else {
-			result = new HttpResult<String>(0, message, "");
-		}
-
-		return result;
-	}
 }

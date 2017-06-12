@@ -1,14 +1,10 @@
 package easybuy.server.service;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import easybuy.server.comm.Util;
 import easybuy.server.dao.UserDao;
-import easybuy.server.model.Ticket;
 import easybuy.server.model.User;
 
 @Service
@@ -81,31 +77,4 @@ public class UserService {
 		return message;
 	}
 	
-	public List<Ticket> getTicketByUserId(Integer userId) {
-		if (userId == null) {
-			return new ArrayList<Ticket>();
-		}
-		
-		return userDao.getTicketByUserId(userId);
-	}
-	
-	public String createOrder(String userId, String movieTimeId, String seats) {
-		String message = null;
-		
-		if (Util.isBlank(userId) || Util.isBlank(movieTimeId) || Util.isBlank(seats)) {
-			message = "userId或movieTimeId或seats为空";
-		}
-		
-		if (message == null) {
-			if (getUserByUserId(Integer.parseInt(userId)) == null) {
-				message = "用户不存在";
-			}
-		}
-		
-		if (message == null) {
-			return userDao.createOrder(userId, movieTimeId, seats);
-		}
-		
-		return message;
-	}
 }
