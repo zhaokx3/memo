@@ -1,12 +1,14 @@
 package easybuy.server.dao;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-//import easybuy.server.model.Event;
+import easybuy.server.model.Event;
 import easybuy.server.model.User;
 import easybuy.server.service.UserService;
 
@@ -34,7 +36,7 @@ public class UserDaoTest {
 		}
 	}
 	
-	@Test
+//	@Test
 	public void registerTest() {
 		String userName = "zhaokx3";
 		String password = "123456";
@@ -70,4 +72,29 @@ public class UserDaoTest {
 		userService.changePassword(userName, newPassword, oldPassword);
 	}
 	
+//	@Test
+	public void addEventTest() {
+		String userId = "10";
+		String eventName = "跑步";
+		String content = "假草10圈跑起来";
+		
+		String message = userService.addEvent(userId, eventName, content);
+		if (message == null) {
+			message = "success";
+		} else {
+			message = "fail";
+		}
+		System.out.println("\nadd Event test:" + message + "\n");
+	}
+	
+	@Test
+	public void getEventByUserIdTest() {
+		Integer userId = 10;
+		List<Event> events =  userService.getEventByUserId(userId);
+		
+		if (events.size() > 0) {
+			System.out.println("the num of events: " + events.size());
+			System.out.println("the first event's id: " + events.get(0).getEventId());
+		}
+	}
 }

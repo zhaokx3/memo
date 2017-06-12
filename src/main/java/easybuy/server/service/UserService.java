@@ -1,10 +1,14 @@
 package easybuy.server.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import easybuy.server.comm.Util;
 import easybuy.server.dao.UserDao;
+import easybuy.server.model.Event;
 import easybuy.server.model.User;
 
 @Service
@@ -77,4 +81,31 @@ public class UserService {
 		return message;
 	}
 	
+	//根据用户id添加事项
+	public String addEvent(String userId, String eventName, String content) {
+		String message = null;
+		
+		if (Util.isBlank(userId) || Util.isBlank(eventName)) {
+			message = "userId或eventName为空";
+		}
+		
+		if (message == null) {
+			if (getUserByUserId(Integer.parseInt(userId)) == null) {
+				message = "用户不存在";
+			}
+		}
+		
+		if (message == null) {
+			return userDao.addEvent(Integer.parseInt(userId), eventName, content);
+		}
+		return message;
+	}
+	
+	// 根据用户id获取全部事项
+	public List<Event> getEventByUserId(Integer userId) {
+		if (userId == null) {
+			return new ArrayList<Event>();
+		}
+		return userDao.getEventByUserId(userId);
+	}
 }

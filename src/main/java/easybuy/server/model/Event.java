@@ -16,9 +16,8 @@ public class Event {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Event(Integer eventId, Integer userId, String eventName, String content) {
+	public Event(Integer userId, String eventName, String content) {
 		super();
-		this.eventId = eventId;
 		this.userId = userId;
 		this.eventName = eventName;
 		this.content = content;

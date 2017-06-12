@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import easybuy.server.model.User;
+import easybuy.server.model.Event;
 
 @Component
 public class UserDao {
@@ -181,4 +182,54 @@ public class UserDao {
 		return message;
 	}
 	
+	//根据用户id添加事项
+	public String addEvent(Integer userId, String eventName, String content) {
+		String message = null;
+		
+		Session sess = null;
+		Transaction tx = null;
+		try {
+			sess = sessionFactory.openSession();
+			tx = sess.beginTransaction();
+			
+			Event event = new Event(userId, eventName, content);
+			sess.save(event);
+			
+			tx.commit();
+		} catch (Exception e) {
+			message = "数据库访问错误";
+			logger.error("UserDao::addEvent函数出错:" + e.getMessage());
+		} finally {
+			if (sess != null) {
+				sess.close();
+			}
+		}
+		return message;
+	}
+	
+	// 根据用户id获取全部事项
+	public List<Event> getEventByUserId(Integer userId) {
+		List<Event> result = null;
+		
+		Session sess = null;
+		Transaction tx = null;
+		try {
+			sess = sessionFactory.openSession();
+			tx = sess.beginTransaction();
+			
+			String hql = "from Event where userId = :userId";
+			Query<Event> query = sess.createQuery(hql, Event.class);
+			result = query.setParameter("userId", userId).setCacheable(true).getResultList();
+			
+			tx.commit();
+		} catch (Exception e) {
+			logger.error("UserDao::getEventByUserId函数出错:" + e.getMessage());
+		} finally {
+			if (sess != null) {
+				sess.close();
+			}
+		}
+		
+		return result;
+	}
 }

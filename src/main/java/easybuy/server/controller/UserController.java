@@ -1,5 +1,7 @@
 package easybuy.server.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import easybuy.server.comm.Util;
 import easybuy.server.model.HttpResult;
+import easybuy.server.model.Event;
 import easybuy.server.model.User;
 import easybuy.server.model.UserInfo;
 import easybuy.server.service.UserService;
@@ -117,4 +120,56 @@ public class UserController {
 		return result;
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "addEvent", method = RequestMethod.POST)
+	public Object addEvent(String userId, String eventName, String content, HttpSession session) {
+		String message = null;
+		
+		logger.info("Request to add Event, session id:" + session.getId());
+		
+		message = userService.addEvent(userId, eventName, content);
+		
+		HttpResult<String> result = null;
+		
+		if (message == null) {
+			result = new HttpResult<String>(1, "", "");
+		} else {
+			result = new HttpResult<String>(0, message, "");
+		}
+
+		return result;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "getEventByUserId", method = RequestMethod.POST)
+	public Object getEventByUserId(Integer userId, HttpSession session) {
+		List<Event> Events = null;
+		String message = null;
+		
+		logger.info("Request to get Event by userId, session id:" + session.getId());
+		
+		if (userId == null) {
+			message = "用户Id为空";
+		}
+		
+		if (message == null) {
+			if (userService.getUserByUserId(userId) == null) {
+				message = "用户不存在";
+			}
+		}
+		
+		if (message == null) {
+			Events = userService.getEventByUserId(userId);
+		}
+		
+		HttpResult<List<Event>> result = null;
+		
+		if (message == null) {
+			result = new HttpResult<List<Event>>(1, "", Events);
+		} else {
+			result = new HttpResult<List<Event>>(0, message, null);
+		}
+		
+		return result;
+	}
 }
