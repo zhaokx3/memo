@@ -15,6 +15,8 @@ CREATE TABLE IF NOT EXISTS `memo`.`event` (
 	`userId` INT NOT NULL,
     `eventName` VARCHAR(50) NOT NULL,
     `content` TEXT DEFAULT NULL,
+    `startTime` VARCHAR(50) NOT NULL,
+    `endTime` VARCHAR(50) NOT NULL,
 	PRIMARY KEY (`eventId`),
     KEY `userId` (`userId`),
     CONSTRAINT `userId` FOREIGN KEY (`userId`) REFERENCES `user` (`userId`) ON DELETE CASCADE ON UPDATE CASCADE
