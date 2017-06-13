@@ -122,12 +122,12 @@ public class UserController {
 	
 	@ResponseBody
 	@RequestMapping(value = "addEvent", method = RequestMethod.POST)
-	public Object addEvent(String userId, String eventName, String content, HttpSession session) {
+	public Object addEvent(Integer userId, String eventName, String content, String startTime, String endTime, HttpSession session) {
 		String message = null;
 		
 		logger.info("Request to add Event, session id:" + session.getId());
 		
-		message = userService.addEvent(userId, eventName, content);
+		message = userService.addEvent(userId, eventName, content, startTime, endTime);
 		
 		HttpResult<String> result = null;
 		

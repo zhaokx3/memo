@@ -22,5 +22,11 @@
 		<property name="content"> 
 			<column name="content"></column>
 		</property>
+		<property name="startTime"> 
+			<column name="startTime"></column>
+		</property>
+		<property name="endTime">
+			<column name="endTime"></column>
+		</property>
 	</class>
 </hibernate-mapping>

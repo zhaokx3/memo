@@ -82,21 +82,21 @@ public class UserService {
 	}
 	
 	//根据用户id添加事项
-	public String addEvent(String userId, String eventName, String content) {
+	public String addEvent(Integer userId, String eventName, String content, String startTime, String endTime) {
 		String message = null;
 		
-		if (Util.isBlank(userId) || Util.isBlank(eventName)) {
-			message = "userId或eventName为空";
+		if (Util.isBlank(eventName)) {
+			message = "eventName为空";
 		}
 		
 		if (message == null) {
-			if (getUserByUserId(Integer.parseInt(userId)) == null) {
+			if (getUserByUserId(userId) == null) {
 				message = "用户不存在";
 			}
 		}
 		
 		if (message == null) {
-			return userDao.addEvent(Integer.parseInt(userId), eventName, content);
+			return userDao.addEvent(userId, eventName, content, startTime, endTime);
 		}
 		return message;
 	}

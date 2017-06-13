@@ -69,16 +69,17 @@ public class UserDaoTest {
 			}
 		}
 		System.out.println("\nchange password test:" + message + "\n");
-		userService.changePassword(userName, newPassword, oldPassword);
 	}
 	
 //	@Test
 	public void addEventTest() {
-		String userId = "10";
+		Integer userId = 1;
 		String eventName = "跑步";
 		String content = "假草10圈跑起来";
+		String startTime = "2017-06-14";
+		String endTime = "2017-06-15";
 		
-		String message = userService.addEvent(userId, eventName, content);
+		String message = userService.addEvent(userId, eventName, content, startTime, endTime);
 		if (message == null) {
 			message = "success";
 		} else {
@@ -87,7 +88,7 @@ public class UserDaoTest {
 		System.out.println("\nadd Event test:" + message + "\n");
 	}
 	
-	@Test
+//	@Test
 	public void getEventByUserIdTest() {
 		Integer userId = 10;
 		List<Event> events =  userService.getEventByUserId(userId);
