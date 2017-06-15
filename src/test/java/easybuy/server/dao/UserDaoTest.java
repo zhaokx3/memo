@@ -73,11 +73,11 @@ public class UserDaoTest {
 	
 //	@Test
 	public void addEventTest() {
-		Integer userId = 1;
-		String eventName = "跑步";
-		String content = "假草10圈跑起来";
-		String startTime = "2017-06-14";
-		String endTime = "2017-06-15";
+		Integer userId = 6;
+		String eventName = "数据挖掘实验报告";
+		String content = "实验报告包括代码、对比分析、理论知识等";
+		String startTime = "2017-06-16";
+		String endTime = "2017-06-23";
 		
 		String message = userService.addEvent(userId, eventName, content, startTime, endTime);
 		if (message == null) {
@@ -88,6 +88,20 @@ public class UserDaoTest {
 		System.out.println("\nadd Event test:" + message + "\n");
 	}
 	
+	@Test
+	public void deleteEventByUserId_EventNameTest() {
+		Integer userId = 6;
+		String eventName = "数据挖掘实验报告";
+		
+		String message = userService.deleteEventByUserId_EventName(userId, eventName);
+		
+		if (message == null) {
+			message = "delete the event success";
+		} else {
+			message = "delete the event fail";
+		}
+		System.out.println("\ndelete Event test:" + message + "\n");
+	}
 //	@Test
 	public void getEventByUserIdTest() {
 		Integer userId = 10;

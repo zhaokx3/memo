@@ -5,7 +5,7 @@
 		<title>Home</title>
 	</head>
 	<body>
-		<h1>Welcome to EasyBuy, the application is developing!</h1>
+		<h1>Welcome to memo, the application is developing!</h1>
 		<P>The time on the server is ${serverTime}.</P>
 	</body>
 </html>

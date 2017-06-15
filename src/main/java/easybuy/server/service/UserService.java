@@ -101,6 +101,24 @@ public class UserService {
 		return message;
 	}
 	
+	// 通过用户id和事件名删除事项
+		public String deleteEventByUserId_EventName(Integer userId, String eventName) {
+			String message = null;
+			if (Util.isBlank(eventName)) {
+				message = "eventName为空";
+			}
+			
+			if (message == null) {
+				if (getUserByUserId(userId) == null) {
+					message = "用户不存在";
+				}
+			}
+			if (message == null) {
+				return userDao.deleteEventByUserId_EventName(userId, eventName);
+			}
+			return message;
+		}
+	
 	// 根据用户id获取全部事项
 	public List<Event> getEventByUserId(Integer userId) {
 		if (userId == null) {

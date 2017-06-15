@@ -207,6 +207,33 @@ public class UserDao {
 		return message;
 	}
 	
+	// 通过用户id和事件名删除事项
+	public String deleteEventByUserId_EventName(Integer userId, String eventName) {
+		String message = null;
+		
+		Session sess = null;
+		Transaction tx = null;
+		try {
+			sess = sessionFactory.openSession();
+			tx = sess.beginTransaction();
+			
+			String hql = "delete from Event where userId = :userId and eventName = :eventName";
+			Query<Event> query = sess.createQuery(hql);
+			query.setParameter("userId", userId).setParameter("eventName", eventName);
+			query.executeUpdate();
+			
+			tx.commit();
+		} catch (Exception e) {
+			message = "数据库访问错误";
+			logger.error("UserDao::deleteEventByUserId_EventName函数出错:" + e.getMessage());
+		} finally {
+			if (sess != null) {
+				sess.close();
+			}
+		}
+		return message;
+	}
+	
 	// 根据用户id获取全部事项
 	public List<Event> getEventByUserId(Integer userId) {
 		List<Event> result = null;

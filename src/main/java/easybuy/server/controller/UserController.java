@@ -141,6 +141,26 @@ public class UserController {
 	}
 	
 	@ResponseBody
+	@RequestMapping(value = "deleteEventByUserId_EventName", method = RequestMethod.POST)
+	public Object deleteEventByUserId_EventName(Integer userId, String eventName, HttpSession session) {
+		String message = null;
+		
+		logger.info("Request to delete the event by userId and eventName, session id:" + session.getId());
+		
+		message = userService.deleteEventByUserId_EventName(userId, eventName);
+		
+		HttpResult<String> result = null;
+		
+		if (message == null) {
+			result = new HttpResult<String>(1, "", "");
+		} else {
+			result = new HttpResult<String>(0, message, "");
+		}
+
+		return result;
+	}
+	
+	@ResponseBody
 	@RequestMapping(value = "getEventByUserId", method = RequestMethod.POST)
 	public Object getEventByUserId(Integer userId, HttpSession session) {
 		List<Event> Events = null;
