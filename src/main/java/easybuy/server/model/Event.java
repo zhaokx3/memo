@@ -34,14 +34,6 @@ public class Event {
 		this.endTime = endTime;
 		this.timestamps = timestamps;
 	}
-	
-	public Integer getProcess() {
-		return process;
-	}
-
-	public void setProcess(Integer process) {
-		this.process = process;
-	}
 
 	public Integer getEventId() {
 		return eventId;
@@ -59,6 +51,14 @@ public class Event {
 		this.userId = userId;
 	}
 
+	public Integer getProcess() {
+		return process;
+	}
+
+	public void setProcess(Integer process) {
+		this.process = process;
+	}
+	
 	public Integer getIcon() {
 		return icon;
 	}

@@ -71,7 +71,7 @@ public class UserDaoTest {
 		System.out.println("\nchange password test:" + message + "\n");
 	}
 	
-//	@Test
+	@Test
 	public void addEventTest() {
 		Integer userId = 1;
 		Integer process = 555;
@@ -92,10 +92,10 @@ public class UserDaoTest {
 		System.out.println("\nadd Event test:" + message + "\n");
 	}
 	
-	@Test
+//	@Test
 	public void changeEventTest() {
 		Integer userId = 1;
-		Integer process = 666;
+		Integer process = 6666;
 		Integer icon = 2;
 		Integer category = 3;
 		String eventName = "数据挖掘实验报告";
@@ -115,7 +115,7 @@ public class UserDaoTest {
 	
 //	@Test
 	public void deleteEventByUserId_EventNameTest() {
-		Integer userId = 6;
+		Integer userId = 1;
 		String eventName = "数据挖掘实验报告";
 		
 		String message = userService.deleteEventByUserId_EventName(userId, eventName);

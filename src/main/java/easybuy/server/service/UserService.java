@@ -82,7 +82,7 @@ public class UserService {
 	}
 	
 	//根据用户id添加事项
-	public String addEvent(Integer userId, Integer icon, Integer process, Integer category, String eventName, String content, String startTime,
+	public String addEvent(Integer userId, Integer process, Integer icon, Integer category, String eventName, String content, String startTime,
 			String endTime, String timestamps) {
 		String message = null;
 		
@@ -103,7 +103,7 @@ public class UserService {
 	}
 	
 	// 通过用户id和事件名修改事项
-		public String changeEvent(Integer userId, Integer icon,Integer process, Integer category, String eventName, String content, String startTime,
+		public String changeEvent(Integer userId, Integer process, Integer icon, Integer category, String eventName, String content, String startTime,
 				String endTime, String timestamps) {
 			String message = null;
 			
