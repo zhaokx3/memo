@@ -14,7 +14,7 @@ Observable<HttpResult<String>> logout();
 
 @FormUrlEncoded
 @POST("/memo/user/register")
-Observable<HttpResult<String>> register(@Field("userName") String userName, @Field("password") String password, @Field("description") String description);
+Observable<HttpResult<String>> register(@Field("userName") String userName, @Field("password") String password, @Field("description") String description， @Field("avatar") String avatar);
 
 @FormUrlEncoded
 @POST("/memo/user/addEvent")
