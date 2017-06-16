@@ -16,6 +16,9 @@
 		<property name="userId">
 			<column name="userId"></column>
 		</property>
+		<property name="process">
+			<column name="process"></column>
+		</property>
 		<property name="icon">
 			<column name="icon"></column>
 		</property>

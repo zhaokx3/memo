@@ -7,6 +7,7 @@ package easybuy.server.model;
 public class Event {
 	private Integer eventId;
 	private Integer userId;
+	private Integer process;
 	private Integer icon;
 	private Integer category;
 	private String eventName;
@@ -20,10 +21,11 @@ public class Event {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Event(Integer userId, Integer icon, Integer category, String eventName, String content, String startTime,
-			String endTime, String timestamps) {
+	public Event(Integer userId, Integer process, Integer icon, Integer category, String eventName, String content,
+			String startTime, String endTime, String timestamps) {
 		super();
 		this.userId = userId;
+		this.process = process;
 		this.icon = icon;
 		this.category = category;
 		this.eventName = eventName;
@@ -31,6 +33,14 @@ public class Event {
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.timestamps = timestamps;
+	}
+	
+	public Integer getProcess() {
+		return process;
+	}
+
+	public void setProcess(Integer process) {
+		this.process = process;
 	}
 
 	public Integer getEventId() {

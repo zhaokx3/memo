@@ -122,13 +122,13 @@ public class UserController {
 	
 	@ResponseBody
 	@RequestMapping(value = "addEvent", method = RequestMethod.POST)
-	public Object addEvent(Integer userId, Integer icon, Integer category, String eventName, String content, String startTime,
+	public Object addEvent(Integer userId, Integer process, Integer icon, Integer category, String eventName, String content, String startTime,
 			String endTime, String timestamps, HttpSession session) {
 		String message = null;
 		
 		logger.info("Request to add Event, session id:" + session.getId());
 		
-		message = userService.addEvent(userId, icon, category, eventName, content, startTime, endTime, timestamps);
+		message = userService.addEvent(userId, process, icon, category, eventName, content, startTime, endTime, timestamps);
 		
 		HttpResult<String> result = null;
 		
@@ -143,13 +143,13 @@ public class UserController {
 	
 	@ResponseBody
 	@RequestMapping(value = "changeEvent", method = RequestMethod.POST)
-	public Object changeEvent(Integer userId, Integer icon, Integer category, String eventName, String content, String startTime,
+	public Object changeEvent(Integer userId, Integer process, Integer icon, Integer category, String eventName, String content, String startTime,
 			String endTime, String timestamps, HttpSession session) {
 		String message = null;
 		
 		logger.info("Request to change Event, session id:" + session.getId());
 		
-		message = userService.changeEvent(userId, icon, category, eventName, content, startTime, endTime, timestamps);
+		message = userService.changeEvent(userId, process, icon, category, eventName, content, startTime, endTime, timestamps);
 		
 		HttpResult<String> result = null;
 		

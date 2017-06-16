@@ -13,6 +13,7 @@ CREATE TABLE IF NOT EXISTS `memo`.`user` (
 CREATE TABLE IF NOT EXISTS `memo`.`event` (
 	`eventId` INT NOT NULL AUTO_INCREMENT,
 	`userId` INT NOT NULL,
+	`process` INT NOT NULL,
 	`icon` INT NOT NULL,
 	`category` INT NOT NULL,
     `eventName` VARCHAR(50) NOT NULL,

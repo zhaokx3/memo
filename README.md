@@ -18,11 +18,11 @@ Observable<HttpResult<String>> register(@Field("userName") String userName, @Fie
 
 @FormUrlEncoded
 @POST("/memo/user/addEvent")
-Observable<HttpResult<String>> addEvent(@Field("userId") Integer userId, @Field("eventName") String eventName, @Field("content") String content, @Field("startTime") String startTime, @Field("endTime") String endTime);
+Observable<HttpResult<String>> addEvent(@Field("userId") Integer userId, @Field("process") Integer process, @Field("icon") Integer icon, @Field("category") Integer category, @Field("eventName") String eventName, @Field("content") String content, @Field("startTime") String startTime, @Field("endTime") String endTime, @Field("timestamps") String timestamps);
 
 @FormUrlEncoded
 @POST("/memo/user/changeEvent")
-Observable<HttpResult<String>> changeEvent(@Field("userId") Integer userId, @Field("eventName") String eventName, @Field("content") String content, @Field("startTime") String startTime, @Field("endTime") String endTime);
+Observable<HttpResult<String>> changeEvent(@Field("userId") Integer userId, @Field("process") Integer process, @Field("icon") Integer icon, @Field("category") Integer category, @Field("eventName") String eventName, @Field("content") String content, @Field("startTime") String startTime, @Field("endTime") String endTime, @Field("timestamps") String timestamps);
 
 @FormUrlEncoded
 @POST("/memo/user/deleteEventByUserId_EventName")

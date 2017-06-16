@@ -73,7 +73,8 @@ public class UserDaoTest {
 	
 //	@Test
 	public void addEventTest() {
-		Integer userId = 6;
+		Integer userId = 1;
+		Integer process = 555;
 		Integer icon = 1;
 		Integer category = 2;
 		String eventName = "数据挖掘实验报告";
@@ -82,7 +83,7 @@ public class UserDaoTest {
 		String endTime = "2017-06-23";
 		String timestamps = "no...";
 		
-		String message = userService.addEvent(userId, icon, category, eventName, content, startTime, endTime, timestamps);
+		String message = userService.addEvent(userId, process, icon, category, eventName, content, startTime, endTime, timestamps);
 		if (message == null) {
 			message = "success";
 		} else {
@@ -93,7 +94,8 @@ public class UserDaoTest {
 	
 	@Test
 	public void changeEventTest() {
-		Integer userId = 6;
+		Integer userId = 1;
+		Integer process = 666;
 		Integer icon = 2;
 		Integer category = 3;
 		String eventName = "数据挖掘实验报告";
@@ -102,7 +104,7 @@ public class UserDaoTest {
 		String endTime = "2017-06-23";
 		String timestamps = "no... add one";
 		
-		String message = userService.changeEvent(userId, icon, category, eventName, content, startTime, endTime, timestamps);
+		String message = userService.changeEvent(userId, process, icon, category, eventName, content, startTime, endTime, timestamps);
 		if (message == null) {
 			message = "success";
 		} else {
