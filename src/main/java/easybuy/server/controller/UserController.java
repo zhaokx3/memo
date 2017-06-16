@@ -122,12 +122,13 @@ public class UserController {
 	
 	@ResponseBody
 	@RequestMapping(value = "addEvent", method = RequestMethod.POST)
-	public Object addEvent(Integer userId, String eventName, String content, String startTime, String endTime, HttpSession session) {
+	public Object addEvent(Integer userId, Integer icon, Integer category, String eventName, String content, String startTime,
+			String endTime, String timestamps, HttpSession session) {
 		String message = null;
 		
 		logger.info("Request to add Event, session id:" + session.getId());
 		
-		message = userService.addEvent(userId, eventName, content, startTime, endTime);
+		message = userService.addEvent(userId, icon, category, eventName, content, startTime, endTime, timestamps);
 		
 		HttpResult<String> result = null;
 		
@@ -137,6 +138,27 @@ public class UserController {
 			result = new HttpResult<String>(0, message, "");
 		}
 
+		return result;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "changeEvent", method = RequestMethod.POST)
+	public Object changeEvent(Integer userId, Integer icon, Integer category, String eventName, String content, String startTime,
+			String endTime, String timestamps, HttpSession session) {
+		String message = null;
+		
+		logger.info("Request to change Event, session id:" + session.getId());
+		
+		message = userService.changeEvent(userId, icon, category, eventName, content, startTime, endTime, timestamps);
+		
+		HttpResult<String> result = null;
+		
+		if (message == null) {
+			result = new HttpResult<String>(1, "", "");
+		} else {
+			result = new HttpResult<String>(0, message, "");
+		}
+		
 		return result;
 	}
 	

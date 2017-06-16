@@ -82,7 +82,8 @@ public class UserService {
 	}
 	
 	//根据用户id添加事项
-	public String addEvent(Integer userId, String eventName, String content, String startTime, String endTime) {
+	public String addEvent(Integer userId, Integer icon, Integer category, String eventName, String content, String startTime,
+			String endTime, String timestamps) {
 		String message = null;
 		
 		if (Util.isBlank(eventName)) {
@@ -96,11 +97,25 @@ public class UserService {
 		}
 		
 		if (message == null) {
-			return userDao.addEvent(userId, eventName, content, startTime, endTime);
+			return userDao.addEvent(userId, icon, category, eventName, content, startTime, endTime, timestamps);
 		}
 		return message;
 	}
 	
+	// 通过用户id和事件名修改事项
+		public String changeEvent(Integer userId, Integer icon, Integer category, String eventName, String content, String startTime,
+				String endTime, String timestamps) {
+			String message = null;
+			
+			message = deleteEventByUserId_EventName(userId, eventName);
+			
+			if (message == null) {
+				return userDao.addEvent(userId, icon, category, eventName, content, startTime, endTime, timestamps);
+			}
+					
+			return message;
+		}
+		
 	// 通过用户id和事件名删除事项
 		public String deleteEventByUserId_EventName(Integer userId, String eventName) {
 			String message = null;

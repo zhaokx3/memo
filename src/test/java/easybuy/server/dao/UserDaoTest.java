@@ -74,12 +74,15 @@ public class UserDaoTest {
 //	@Test
 	public void addEventTest() {
 		Integer userId = 6;
+		Integer icon = 1;
+		Integer category = 2;
 		String eventName = "数据挖掘实验报告";
 		String content = "实验报告包括代码、对比分析、理论知识等";
 		String startTime = "2017-06-16";
 		String endTime = "2017-06-23";
+		String timestamps = "no...";
 		
-		String message = userService.addEvent(userId, eventName, content, startTime, endTime);
+		String message = userService.addEvent(userId, icon, category, eventName, content, startTime, endTime, timestamps);
 		if (message == null) {
 			message = "success";
 		} else {
@@ -89,6 +92,26 @@ public class UserDaoTest {
 	}
 	
 	@Test
+	public void changeEventTest() {
+		Integer userId = 6;
+		Integer icon = 2;
+		Integer category = 3;
+		String eventName = "数据挖掘实验报告";
+		String content = "两次kaggle结果提交，实验报告包括代码、对比分析、理论知识等";
+		String startTime = "2017-06-17";
+		String endTime = "2017-06-23";
+		String timestamps = "no... add one";
+		
+		String message = userService.changeEvent(userId, icon, category, eventName, content, startTime, endTime, timestamps);
+		if (message == null) {
+			message = "success";
+		} else {
+			message = "fail";
+		}
+		System.out.println("\nchange Event test:" + message + "\n");
+	}
+	
+//	@Test
 	public void deleteEventByUserId_EventNameTest() {
 		Integer userId = 6;
 		String eventName = "数据挖掘实验报告";

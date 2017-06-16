@@ -16,6 +16,12 @@
 		<property name="userId">
 			<column name="userId"></column>
 		</property>
+		<property name="icon">
+			<column name="icon"></column>
+		</property>
+		<property name="category">
+			<column name="category"></column>
+		</property>
 		<property name="eventName">
 			<column name="eventName"></column>
 		</property>
@@ -27,6 +33,9 @@
 		</property>
 		<property name="endTime">
 			<column name="endTime"></column>
+		</property>
+		<property name="timestamps">
+			<column name="timestamps"></column>
 		</property>
 	</class>
 </hibernate-mapping>

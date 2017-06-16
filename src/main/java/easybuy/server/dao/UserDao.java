@@ -183,7 +183,8 @@ public class UserDao {
 	}
 	
 	//根据用户id添加事项
-	public String addEvent(Integer userId, String eventName, String content, String startTime, String endTime) {
+	public String addEvent(Integer userId, Integer icon, Integer category, String eventName, String content, String startTime,
+			String endTime, String timestamps) {
 		String message = null;
 		
 		Session sess = null;
@@ -192,7 +193,7 @@ public class UserDao {
 			sess = sessionFactory.openSession();
 			tx = sess.beginTransaction();
 			
-			Event event = new Event(userId, eventName, content, startTime, endTime);
+			Event event  = new Event(userId, icon, category, eventName, content, startTime, endTime, timestamps);
 			sess.save(event);
 			
 			tx.commit();
